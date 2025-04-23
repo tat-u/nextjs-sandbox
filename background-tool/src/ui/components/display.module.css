@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inner_content {
+  width: 200px;
+  height: 200px;
+
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px #00000050;
+}
