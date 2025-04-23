@@ -1,4 +1,5 @@
 import { Display } from "@/ui/components/display";
+import { MySlider } from "@/ui/components/my-slider";
 
 export default function Home() {
   return (
@@ -6,6 +7,7 @@ export default function Home() {
       <main>
         <Display />
         PAPER
+        <MySlider />
       </main>
     </div>
   );
