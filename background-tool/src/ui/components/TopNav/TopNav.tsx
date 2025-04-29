@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@/ui/components/top-nav.module.css";
+import styles from "@/ui/components/TopNav/TopNav.module.css";
 
 export function TopNav() {
   return (

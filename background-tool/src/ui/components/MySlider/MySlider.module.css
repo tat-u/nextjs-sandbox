@@ -1,0 +1,11 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+
+  /* Slider コンポーネントの line-height を打ち消す */
+  line-height: 0;
+}
+
+.box {
+  width: 240px;
+}

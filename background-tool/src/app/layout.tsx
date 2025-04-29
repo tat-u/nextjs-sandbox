@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { geistSans, geistMono } from "@/ui/fonts";
 import "@/ui/global.css";
-import { TopNav } from "@/ui/components/top-nav";
+import { TopNav } from "@/ui/components/TopNav/TopNav";
 
 export const metadata: Metadata = {
   title: "Background Tool",
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.className} ${geistMono.className} antialiased`}
       >
         <TopNav />
         {children}
