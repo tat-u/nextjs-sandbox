@@ -7,7 +7,7 @@ export function MySlider({
 }: {
   setter: Dispatch<SetStateAction<number>>;
 }) {
-  const handleChange = (event, value, activeThumb) => {
+  const handleChange = (event: Event, value: number, activeThumb: number) => {
     setter(value);
   };
 

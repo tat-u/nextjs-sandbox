@@ -3,6 +3,7 @@
 import { cssPropsToKebebCase } from "@/libs/libs";
 import { Display } from "@/ui/components/Display/Display";
 import { MySlider } from "@/ui/components/MySlider/MySlider";
+import { CodeBlock } from "@/ui/components/CodeBlock/CodeBlock";
 import { CSSProperties, useState } from "react";
 
 export default function Home() {
@@ -36,14 +37,7 @@ export default function Home() {
       <main>
         <MySlider setter={setSliderValue} />
         <Display cssProps={cssProps} />
-        <pre>
-          <code>
-            {cssPropsToKebebCase(cssProps)}
-            {/* TODO: ここにCSSを表示するコードブロックを入れる。今はべた書きだけど */}
-            {/* TODO: コードブロックの実装を考える */}
-            {/* https://www.homepage-tukurikata.com/html/pre-code.html */}
-          </code>
-        </pre>
+        <CodeBlock code={cssPropsToKebebCase(cssProps)} />
       </main>
     </div>
   );
