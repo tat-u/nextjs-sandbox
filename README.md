@@ -7,5 +7,7 @@ npx create-next-app@latest
 npm create storybook@latest
 npm install react-hook-form
 npm install zod
+
+// Integrate Tailwind CSS with Storybook
 npx storybook@latest add @storybook/addon-styling-webpack
 ```
