@@ -13,9 +13,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Visual test only
- */
 export const Example: Story = {
   args: {
     children: "Submit",
