@@ -14,5 +14,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Example: Story = {
-  args: { label: "タイトル", registerReturn: undefined },
+  args: { label: "タイトル", error: "入力してください" },
 };
