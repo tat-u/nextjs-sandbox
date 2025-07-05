@@ -10,4 +10,7 @@ npm install zod
 
 // Integrate Tailwind CSS with Storybook
 npx storybook@latest add @storybook/addon-styling-webpack
+
+// Integrate Zod with React Hook Form
+npm install @hookform/resolvers
 ```
