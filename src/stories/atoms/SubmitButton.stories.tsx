@@ -18,3 +18,10 @@ export const Example: Story = {
     children: "Submit",
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    children: "Submit",
+    disabled: true,
+  },
+};
