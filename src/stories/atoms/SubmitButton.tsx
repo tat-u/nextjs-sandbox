@@ -1,9 +1,6 @@
-import { DetailedHTMLProps, ButtonHTMLAttributes } from "react";
+import { ComponentProps } from "react";
 
-type Props = DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
+type Props = Omit<ComponentProps<"button">, "className" | "type">;
 
 export function SubmitButton(props: Props) {
   return (

@@ -1,11 +1,6 @@
-import { useRef, InputHTMLAttributes, DetailedHTMLProps } from "react";
+import { useRef, ComponentProps } from "react";
 
-// Extends React <input /> props
-// className でスタイルが上書き不可であること以外に差異を作らない
-type Props = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+type Props = Omit<ComponentProps<"input">, "className" | "type">;
 
 export function TextInput({ ref, ...rest }: Props) {
   // Share input ref
