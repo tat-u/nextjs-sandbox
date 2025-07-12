@@ -36,6 +36,27 @@ export type PokemonType =
   // 17
   | "fairy";
 
+export const allPokemonTypes = [
+  "normal",
+  "fire",
+  "water",
+  "electric",
+  "grass",
+  "ice",
+  "fighting",
+  "poison",
+  "ground",
+  "flying",
+  "psychic",
+  "bug",
+  "rock",
+  "ghost",
+  "dragon",
+  "dark",
+  "steel",
+  "fairy",
+] as const satisfies PokemonType[];
+
 export type Vector18 = [
   number, // 0
   number, // 1
@@ -99,7 +120,7 @@ export const defensivenessTable: Record<PokemonType, Vector18> = {
   fairy: [0, 0, 0, 0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 0, -2, -1, 1, 0],
 } as const;
 
-export const pokemonTypes = {
+export const typeDetails = {
   normal: { id: 0, name: { en: "Normal", ja: "ノーマル" } },
   fire: { id: 1, name: { en: "Fire", ja: "ほのお" } },
   water: { id: 2, name: { en: "Water", ja: "みず" } },
