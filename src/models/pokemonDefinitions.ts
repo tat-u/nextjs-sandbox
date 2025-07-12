@@ -120,6 +120,10 @@ export const defensivenessTable: Record<PokemonType, Vector18> = {
   fairy: [0, 0, 0, 0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 0, -2, -1, 1, 0],
 } as const;
 
+export const noScalingVector = [
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+] as const satisfies Vector18;
+
 export const pokemonTypeDetails = {
   normal: { id: 0, name: { en: "Normal", ja: "ノーマル" } },
   fire: { id: 1, name: { en: "Fire", ja: "ほのお" } },
