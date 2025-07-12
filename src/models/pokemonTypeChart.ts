@@ -8,15 +8,15 @@ import {
   pokemonTypeDetails,
 } from "./pokemonDefinitions";
 
-export const getPokemonTypeId = (type: PokemonType): number => {
-  return pokemonTypeDetails[type].id;
+export const getPokemonTypeId = (pokemonType: PokemonType): number => {
+  return pokemonTypeDetails[pokemonType].id;
 };
 
 export const getPokemonTypeName = (
-  type: PokemonType,
+  pokemonType: PokemonType,
   lang: SupportedLanguages
 ): string => {
-  return pokemonTypeDetails[type].name[lang];
+  return pokemonTypeDetails[pokemonType].name[lang];
 };
 
 export const getEffectiveness = (
@@ -82,11 +82,11 @@ export const getReceiveDamageMultiplier = (
 
 export const generateAttackChart = (playerAttackType: PokemonType) => {
   return allPokemonTypes
-    .map((type) => ({
-      type,
-      getEffectiveness: getEffectiveness(playerAttackType, type, null),
+    .map((pokemonType) => ({
+      pokemonType,
+      getEffectiveness: getEffectiveness(playerAttackType, pokemonType, null),
       damageMultiplierPercent: Math.round(
-        100 * getInflictDamageMultiplier(playerAttackType, type, null)
+        100 * getInflictDamageMultiplier(playerAttackType, pokemonType, null)
       ),
     }))
     .sort((a, b) => b.damageMultiplierPercent - a.damageMultiplierPercent);
@@ -97,11 +97,11 @@ export const generateDefenseChart = (
   playerTypeB: PokemonType | null
 ) => {
   return allPokemonTypes
-    .map((type) => ({
-      type,
-      getDefensiveness: getDefensiveness(playerTypeA, playerTypeB, type),
+    .map((pokemonType) => ({
+      pokemonType,
+      getDefensiveness: getDefensiveness(playerTypeA, playerTypeB, pokemonType),
       damageMultiplierPercent: Math.round(
-        100 * getReceiveDamageMultiplier(playerTypeA, playerTypeB, type)
+        100 * getReceiveDamageMultiplier(playerTypeA, playerTypeB, pokemonType)
       ),
     }))
     .sort((a, b) => a.damageMultiplierPercent - b.damageMultiplierPercent);
