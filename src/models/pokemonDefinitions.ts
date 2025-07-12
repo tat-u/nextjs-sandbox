@@ -124,25 +124,90 @@ export const noScalingVector = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ] as const satisfies Vector18;
 
+const typeColors = {
+  normal: "#A1ABB3",
+  fire: "#C73637",
+  water: "#2975D6",
+  electric: "#EDBD05",
+  grass: "#37A320",
+  ice: "#2FBFCF",
+  fighting: "#DE7400",
+  poison: "#8F4AC4",
+  ground: "#804A1F",
+  flying: "#78A9DB",
+  psychic: "#D64777",
+  bug: "#8A9919",
+  rock: "#A8A37B",
+  ghost: "#6E346E",
+  dragon: "#4959D1",
+  dark: "#4A3733",
+  steel: "#62A2B9",
+  fairy: "#E667E6",
+};
+
 export const pokemonTypeDetails = {
-  normal: { id: 0, name: { en: "Normal", ja: "ノーマル" } },
-  fire: { id: 1, name: { en: "Fire", ja: "ほのお" } },
-  water: { id: 2, name: { en: "Water", ja: "みず" } },
-  electric: { id: 3, name: { en: "Electric", ja: "でんき" } },
-  grass: { id: 4, name: { en: "Grass", ja: "くさ" } },
-  ice: { id: 5, name: { en: "Ice", ja: "こおり" } },
-  fighting: { id: 6, name: { en: "Fighting", ja: "かくとう" } },
-  poison: { id: 7, name: { en: "Poison", ja: "どく" } },
-  ground: { id: 8, name: { en: "Ground", ja: "じめん" } },
-  flying: { id: 9, name: { en: "Flying", ja: "ひこう" } },
-  psychic: { id: 10, name: { en: "Psychic", ja: "エスパー" } },
-  bug: { id: 11, name: { en: "Bug", ja: "むし" } },
-  rock: { id: 12, name: { en: "Rock", ja: "いわ" } },
-  ghost: { id: 13, name: { en: "Ghost", ja: "ゴースト" } },
-  dragon: { id: 14, name: { en: "Dragon", ja: "ドラゴン" } },
-  dark: { id: 15, name: { en: "Dark", ja: "あく" } },
-  steel: { id: 16, name: { en: "Steel", ja: "はがね" } },
-  fairy: { id: 17, name: { en: "Fairy", ja: "フェアリー" } },
+  normal: {
+    id: 0,
+    name: { en: "Normal", ja: "ノーマル" },
+    color: typeColors.normal,
+  },
+  fire: { id: 1, name: { en: "Fire", ja: "ほのお" }, color: typeColors.fire },
+  water: { id: 2, name: { en: "Water", ja: "みず" }, color: typeColors.water },
+  electric: {
+    id: 3,
+    name: { en: "Electric", ja: "でんき" },
+    color: typeColors.electric,
+  },
+  grass: { id: 4, name: { en: "Grass", ja: "くさ" }, color: typeColors.grass },
+  ice: { id: 5, name: { en: "Ice", ja: "こおり" }, color: typeColors.ice },
+  fighting: {
+    id: 6,
+    name: { en: "Fighting", ja: "かくとう" },
+    color: typeColors.fighting,
+  },
+  poison: {
+    id: 7,
+    name: { en: "Poison", ja: "どく" },
+    color: typeColors.poison,
+  },
+  ground: {
+    id: 8,
+    name: { en: "Ground", ja: "じめん" },
+    color: typeColors.ground,
+  },
+  flying: {
+    id: 9,
+    name: { en: "Flying", ja: "ひこう" },
+    color: typeColors.flying,
+  },
+  psychic: {
+    id: 10,
+    name: { en: "Psychic", ja: "エスパー" },
+    color: typeColors.psychic,
+  },
+  bug: { id: 11, name: { en: "Bug", ja: "むし" }, color: typeColors.bug },
+  rock: { id: 12, name: { en: "Rock", ja: "いわ" }, color: typeColors.rock },
+  ghost: {
+    id: 13,
+    name: { en: "Ghost", ja: "ゴースト" },
+    color: typeColors.ghost,
+  },
+  dragon: {
+    id: 14,
+    name: { en: "Dragon", ja: "ドラゴン" },
+    color: typeColors.dragon,
+  },
+  dark: { id: 15, name: { en: "Dark", ja: "あく" }, color: typeColors.dark },
+  steel: {
+    id: 16,
+    name: { en: "Steel", ja: "はがね" },
+    color: typeColors.steel,
+  },
+  fairy: {
+    id: 17,
+    name: { en: "Fairy", ja: "フェアリー" },
+    color: typeColors.fairy,
+  },
 } as const;
 
 export type SupportedLanguages = "en" | "ja";
