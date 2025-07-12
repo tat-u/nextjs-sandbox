@@ -144,3 +144,5 @@ export const pokemonTypeDetails = {
   steel: { id: 16, name: { en: "Steel", ja: "はがね" } },
   fairy: { id: 17, name: { en: "Fairy", ja: "フェアリー" } },
 } as const;
+
+export type SupportedLanguages = "en" | "ja";

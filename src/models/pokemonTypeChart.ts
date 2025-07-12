@@ -1,5 +1,6 @@
 import {
   PokemonType,
+  SupportedLanguages,
   allPokemonTypes,
   noScalingVector,
   effectivenessTable,
@@ -9,6 +10,13 @@ import {
 
 const getPokemonTypeId = (type: PokemonType): number => {
   return pokemonTypeDetails[type].id;
+};
+
+const getPokemonTypeName = (
+  type: PokemonType,
+  lang: SupportedLanguages
+): string => {
+  return pokemonTypeDetails[type].name[lang];
 };
 
 const getEffectiveness = (
