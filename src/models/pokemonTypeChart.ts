@@ -84,6 +84,7 @@ export const generateAttackChart = (playerAttackType: PokemonType) => {
   return allPokemonTypes
     .map((type) => ({
       type,
+      getEffectiveness: getEffectiveness(playerAttackType, type, null),
       damageMultiplierPercent: Math.round(
         100 * getInflictDamageMultiplier(playerAttackType, type, null)
       ),
@@ -98,6 +99,7 @@ export const generateDefenseChart = (
   return allPokemonTypes
     .map((type) => ({
       type,
+      getDefensiveness: getDefensiveness(playerTypeA, playerTypeB, type),
       damageMultiplierPercent: Math.round(
         100 * getReceiveDamageMultiplier(playerTypeA, playerTypeB, type)
       ),
