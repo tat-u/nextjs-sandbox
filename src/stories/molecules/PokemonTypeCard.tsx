@@ -1,4 +1,4 @@
-import { PokemonType, pokemonTypeColors } from "@/models/pokemonDefinitions";
+import { PokemonType, pokemonTypes } from "@/models/pokemonDefinitions";
 import { PokemonChip } from "../atoms/PokemonChip";
 
 type Props = { children: string; pokemonType: PokemonType; percentage: number };
@@ -10,7 +10,7 @@ export function PokemonTypeCard({ children, pokemonType, percentage }: Props) {
     >
       <div
         style={{
-          backgroundColor: pokemonTypeColors[pokemonType],
+          backgroundColor: pokemonTypes[pokemonType].color,
         }}
         className={`w-[8px] h-full`}
       ></div>
