@@ -6,7 +6,7 @@ type Props = { children: string; pokemonType: PokemonType; percentage: number };
 export function PokemonTypeCard({ children, pokemonType, percentage }: Props) {
   return (
     <div
-      className={`w-[144px] h-[32px] rounded-lg flex items-center shadow-sm overflow-hidden my-[4px]`}
+      className={`w-[144px] h-[32px] rounded-lg flex shrink-0 items-center shadow-sm overflow-hidden`}
     >
       <div
         style={{
