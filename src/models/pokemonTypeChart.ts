@@ -105,6 +105,41 @@ const generateDefenseChart = (
     .sort((a, b) => a.damageMultiplierPercent - b.damageMultiplierPercent);
 };
 
+const generateRecommendedChart = (
+  playerTypeA: PokemonType,
+  playerTypeB: PokemonType | null,
+  playerAttackType: PokemonType
+) => {
+  // ダメージを受けにくい相手ポケモンのわざのタイプ
+  // has good defense against...
+  console.log(
+    generateDefenseChart(playerTypeA, playerTypeB).filter(
+      (entry) => entry.damageMultiplierPercent < 100
+    )
+  );
+  // ダメージを与えやすい相手ポケモンのタイプ
+  // can inflict good damage against...
+  console.log(
+    generateAttackChart(playerAttackType).filter(
+      (entry) => entry.damageMultiplierPercent > 100
+    )
+  );
+  // ダメージを受けやすい相手ポケモンのわざのタイプ
+  // has poor defense against...
+  console.log(
+    generateDefenseChart(playerTypeA, playerTypeB).filter(
+      (entry) => entry.damageMultiplierPercent > 100
+    )
+  );
+  // ダメージを与えにくい相手ポケモンのタイプ
+  // can inflict poor damage against...
+  console.log(
+    generateAttackChart(playerAttackType).filter(
+      (entry) => entry.damageMultiplierPercent < 100
+    )
+  );
+};
+
 console.log(
   "バンギラス（いわ、あく）、アイアンテール（はがね）、だいもんじ（ほのお）の場合の例:"
 );
@@ -116,3 +151,5 @@ console.log();
 console.log("わざのタイプ: <はがね>");
 console.log("このわざはこのタイプのポケモンに強い！");
 console.log(generateAttackChart("steel"));
+console.log("総合的なおすすめ:");
+generateRecommendedChart("rock", "dark", "steel");
