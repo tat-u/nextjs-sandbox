@@ -76,25 +76,38 @@ const generateAttackChart = (playerAttackType: PokemonType) => {
   return allPokemonTypes
     .map((type) => ({
       type,
-      effectiveness: getEffectiveness(playerAttackType, type, null),
-      damageMultiplier: getInflictDamageMultiplier(
-        playerAttackType,
-        type,
-        null
+      damageMultiplierPercent: Math.round(
+        100 * getInflictDamageMultiplier(playerAttackType, type, null)
       ),
     }))
-    .sort((a, b) => b.effectiveness - a.effectiveness);
+    .sort((a, b) => b.damageMultiplierPercent - a.damageMultiplierPercent);
 };
 
-const generateDefenseChart = (playerType: PokemonType) => {
+const generateDefenseChart = (
+  playerTypeA: PokemonType,
+  playerTypeB: PokemonType | null
+) => {
   return allPokemonTypes
     .map((type) => ({
       type,
-      effectiveness: getDefensiveness(playerType, null, type),
-      damageMultiplier: getReceiveDamageMultiplier(playerType, null, type),
+      damageMultiplierPercent: Math.round(
+        100 * getReceiveDamageMultiplier(playerTypeA, playerTypeB, type)
+      ),
     }))
-    .sort((a, b) => a.effectiveness - b.effectiveness);
+    .sort((a, b) => a.damageMultiplierPercent - b.damageMultiplierPercent);
 };
 
-console.log(generateAttackChart("normal"));
-console.log(generateDefenseChart("normal"));
+console.log(
+  "バンギラス（いわ、あく）、アイアンテール（はがね）、だいもんじ（ほのお）の場合の例:"
+);
+console.log();
+console.log("タイプ1: <いわ>, タイプ2: <あく>");
+console.log("このポケモンはこのタイプのわざに強い！");
+console.log(generateDefenseChart("rock", "dark"));
+console.log();
+console.log("わざ1のタイプ: <はがね>");
+console.log("このわざはこのタイプのポケモンに強い！");
+console.log(generateAttackChart("steel"));
+console.log("わざ2のタイプ: <ほのお>");
+console.log("このわざはこのタイプのポケモンに強い！");
+console.log(generateAttackChart("fire"));
