@@ -1,22 +1,22 @@
 import {
   PokemonType,
   SupportedLanguages,
-  allPokemonTypes,
+  pokemonTypes,
   noScalingVector,
   effectivenessTable,
   defensivenessTable,
-  pokemonTypeDetails,
 } from "./pokemonDefinitions";
+import { typedObjectKeys } from "./pokemonUtils";
 
-export const getPokemonTypeId = (pokemonType: PokemonType): number => {
-  return pokemonTypeDetails[pokemonType].id;
+export const getPokemonTypeIndex = (pokemonType: PokemonType): number => {
+  return pokemonTypes[pokemonType].index;
 };
 
 export const getPokemonTypeName = (
   pokemonType: PokemonType,
   lang: SupportedLanguages
 ): string => {
-  return pokemonTypeDetails[pokemonType].name[lang];
+  return pokemonTypes[pokemonType].name[lang];
 };
 
 export const getEffectiveness = (
@@ -27,9 +27,10 @@ export const getEffectiveness = (
   const effectivenessVector = effectivenessTable[playerAttackType];
 
   // NOTE: Opponent's type can be a single type or a dual type
-  const effectivenessA = effectivenessVector[getPokemonTypeId(opponentTypeA)];
+  const effectivenessA =
+    effectivenessVector[getPokemonTypeIndex(opponentTypeA)];
   const effectivenessB = opponentTypeB
-    ? effectivenessVector[getPokemonTypeId(opponentTypeB)]
+    ? effectivenessVector[getPokemonTypeIndex(opponentTypeB)]
     : 0;
 
   return effectivenessA + effectivenessB;
@@ -47,9 +48,9 @@ export const getDefensiveness = (
     : noScalingVector;
 
   const defensivenessA =
-    defensivenessVectorA[getPokemonTypeId(opponentAttackType)];
+    defensivenessVectorA[getPokemonTypeIndex(opponentAttackType)];
   const defensivenessB =
-    defensivenessVectorB[getPokemonTypeId(opponentAttackType)];
+    defensivenessVectorB[getPokemonTypeIndex(opponentAttackType)];
 
   return defensivenessA + defensivenessB;
 };
@@ -81,7 +82,7 @@ export const getReceiveDamageMultiplier = (
 };
 
 export const generateAttackChart = (playerAttackType: PokemonType) => {
-  return allPokemonTypes
+  return typedObjectKeys(pokemonTypes)
     .map((pokemonType) => ({
       pokemonType,
       getEffectiveness: getEffectiveness(playerAttackType, pokemonType, null),
@@ -96,7 +97,7 @@ export const generateDefenseChart = (
   playerTypeA: PokemonType,
   playerTypeB: PokemonType | null
 ) => {
-  return allPokemonTypes
+  return typedObjectKeys(pokemonTypes)
     .map((pokemonType) => ({
       pokemonType,
       getDefensiveness: getDefensiveness(playerTypeA, playerTypeB, pokemonType),

@@ -36,27 +36,6 @@ export type PokemonType =
   // 17
   | "fairy";
 
-export const allPokemonTypes = [
-  "normal",
-  "fire",
-  "water",
-  "electric",
-  "grass",
-  "ice",
-  "fighting",
-  "poison",
-  "ground",
-  "flying",
-  "psychic",
-  "bug",
-  "rock",
-  "ghost",
-  "dragon",
-  "dark",
-  "steel",
-  "fairy",
-] as const satisfies PokemonType[];
-
 export type Vector18 = [
   number, // 0
   number, // 1
@@ -78,7 +57,7 @@ export type Vector18 = [
   number // 17
 ];
 
-export const effectivenessTable: Record<PokemonType, Vector18> = {
+export const effectivenessTable = {
   normal: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -2, 0, 0, -1, 0],
   fire: [0, -1, -1, 0, 1, 1, 0, 0, 0, 0, 0, 1, -1, 0, -1, 0, 1, 0],
   water: [0, 1, -1, 0, -1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0, 0, 0],
@@ -97,9 +76,9 @@ export const effectivenessTable: Record<PokemonType, Vector18> = {
   dark: [0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 1, 0, 0, 1, 0, -1, 0, -1],
   steel: [0, -1, -1, -1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, -1, 1],
   fairy: [0, -1, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 0, 0, 1, 1, -1, 0],
-} as const;
+} as const satisfies Record<PokemonType, Vector18>;
 
-export const defensivenessTable: Record<PokemonType, Vector18> = {
+export const defensivenessTable = {
   normal: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0],
   fire: [0, -1, 1, 0, -1, -1, 0, 0, 1, 0, 0, -1, 1, 0, 0, 0, -1, -1],
   water: [0, -1, -1, 1, 1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0],
@@ -118,13 +97,14 @@ export const defensivenessTable: Record<PokemonType, Vector18> = {
   dark: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, -2, 1, 0, -1, 0, -1, 0, 1],
   steel: [-1, 1, 0, 0, -1, -1, 1, -2, 1, -1, -1, -1, -1, 0, -1, 0, -1, -1],
   fairy: [0, 0, 0, 0, 0, 0, -1, 1, 0, 0, 0, -1, 0, 0, -2, -1, 1, 0],
-} as const;
+} as const satisfies Record<PokemonType, Vector18>;
 
 export const noScalingVector = [
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ] as const satisfies Vector18;
 
-export const pokemonTypeColors: Record<PokemonType, string> = {
+// PRIVATE
+const pokemonTypeColors = {
   normal: "#A1ABB3",
   fire: "#C73637",
   water: "#2975D6",
@@ -143,96 +123,99 @@ export const pokemonTypeColors: Record<PokemonType, string> = {
   dark: "#4A3733",
   steel: "#62A2B9",
   fairy: "#E667E6",
-};
+} as const satisfies Record<PokemonType, string>;
 
-export const pokemonTypeDetails = {
+export const pokemonTypes: Record<
+  PokemonType,
+  { index: number; name: Record<SupportedLanguages, string>; color: string }
+> = {
   normal: {
-    id: 0,
+    index: 0,
     name: { en: "Normal", ja: "ノーマル" },
     color: pokemonTypeColors.normal,
   },
   fire: {
-    id: 1,
+    index: 1,
     name: { en: "Fire", ja: "ほのお" },
     color: pokemonTypeColors.fire,
   },
   water: {
-    id: 2,
+    index: 2,
     name: { en: "Water", ja: "みず" },
     color: pokemonTypeColors.water,
   },
   electric: {
-    id: 3,
+    index: 3,
     name: { en: "Electric", ja: "でんき" },
     color: pokemonTypeColors.electric,
   },
   grass: {
-    id: 4,
+    index: 4,
     name: { en: "Grass", ja: "くさ" },
     color: pokemonTypeColors.grass,
   },
   ice: {
-    id: 5,
+    index: 5,
     name: { en: "Ice", ja: "こおり" },
     color: pokemonTypeColors.ice,
   },
   fighting: {
-    id: 6,
+    index: 6,
     name: { en: "Fighting", ja: "かくとう" },
     color: pokemonTypeColors.fighting,
   },
   poison: {
-    id: 7,
+    index: 7,
     name: { en: "Poison", ja: "どく" },
     color: pokemonTypeColors.poison,
   },
   ground: {
-    id: 8,
+    index: 8,
     name: { en: "Ground", ja: "じめん" },
     color: pokemonTypeColors.ground,
   },
   flying: {
-    id: 9,
+    index: 9,
     name: { en: "Flying", ja: "ひこう" },
     color: pokemonTypeColors.flying,
   },
   psychic: {
-    id: 10,
+    index: 10,
     name: { en: "Psychic", ja: "エスパー" },
     color: pokemonTypeColors.psychic,
   },
   bug: {
-    id: 11,
+    index: 11,
     name: { en: "Bug", ja: "むし" },
     color: pokemonTypeColors.bug,
   },
   rock: {
-    id: 12,
+    index: 12,
     name: { en: "Rock", ja: "いわ" },
     color: pokemonTypeColors.rock,
   },
   ghost: {
-    id: 13,
+    index: 13,
     name: { en: "Ghost", ja: "ゴースト" },
     color: pokemonTypeColors.ghost,
   },
   dragon: {
-    id: 14,
+    index: 14,
     name: { en: "Dragon", ja: "ドラゴン" },
     color: pokemonTypeColors.dragon,
   },
   dark: {
-    id: 15,
+    index: 15,
     name: { en: "Dark", ja: "あく" },
     color: pokemonTypeColors.dark,
   },
   steel: {
-    id: 16,
+    index: 16,
     name: { en: "Steel", ja: "はがね" },
     color: pokemonTypeColors.steel,
   },
   fairy: {
-    id: 17,
+    index: 17,
     name: { en: "Fairy", ja: "フェアリー" },
     color: pokemonTypeColors.fairy,
   },
