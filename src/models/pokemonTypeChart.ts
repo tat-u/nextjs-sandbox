@@ -8,18 +8,18 @@ import {
   pokemonTypeDetails,
 } from "./pokemonDefinitions";
 
-const getPokemonTypeId = (type: PokemonType): number => {
+export const getPokemonTypeId = (type: PokemonType): number => {
   return pokemonTypeDetails[type].id;
 };
 
-const getPokemonTypeName = (
+export const getPokemonTypeName = (
   type: PokemonType,
   lang: SupportedLanguages
 ): string => {
   return pokemonTypeDetails[type].name[lang];
 };
 
-const getEffectiveness = (
+export const getEffectiveness = (
   playerAttackType: PokemonType,
   opponentTypeA: PokemonType,
   opponentTypeB: PokemonType | null
@@ -35,7 +35,7 @@ const getEffectiveness = (
   return effectivenessA + effectivenessB;
 };
 
-const getDefensiveness = (
+export const getDefensiveness = (
   playerTypeA: PokemonType,
   playerTypeB: PokemonType | null,
   opponentAttackType: PokemonType
@@ -54,7 +54,7 @@ const getDefensiveness = (
   return defensivenessA + defensivenessB;
 };
 
-const getInflictDamageMultiplier = (
+export const getInflictDamageMultiplier = (
   playerAttackType: PokemonType,
   opponentTypeA: PokemonType,
   opponentTypeB: PokemonType | null
@@ -67,7 +67,7 @@ const getInflictDamageMultiplier = (
   return Math.pow(1.6, effectiveness);
 };
 
-const getReceiveDamageMultiplier = (
+export const getReceiveDamageMultiplier = (
   playerTypeA: PokemonType,
   playerTypeB: PokemonType | null,
   opponentAttackType: PokemonType
@@ -80,7 +80,7 @@ const getReceiveDamageMultiplier = (
   return Math.pow(1.6, defensiveness);
 };
 
-const generateAttackChart = (playerAttackType: PokemonType) => {
+export const generateAttackChart = (playerAttackType: PokemonType) => {
   return allPokemonTypes
     .map((type) => ({
       type,
@@ -91,7 +91,7 @@ const generateAttackChart = (playerAttackType: PokemonType) => {
     .sort((a, b) => b.damageMultiplierPercent - a.damageMultiplierPercent);
 };
 
-const generateDefenseChart = (
+export const generateDefenseChart = (
   playerTypeA: PokemonType,
   playerTypeB: PokemonType | null
 ) => {
@@ -105,51 +105,25 @@ const generateDefenseChart = (
     .sort((a, b) => a.damageMultiplierPercent - b.damageMultiplierPercent);
 };
 
-const generateRecommendedChart = (
+export const generateRecommendedChart = (
   playerTypeA: PokemonType,
   playerTypeB: PokemonType | null,
   playerAttackType: PokemonType
 ) => {
-  // ダメージを受けにくい相手ポケモンのわざのタイプ
-  // has good defense against...
-  console.log(
-    generateDefenseChart(playerTypeA, playerTypeB).filter(
-      (entry) => entry.damageMultiplierPercent < 100
-    )
-  );
-  // ダメージを与えやすい相手ポケモンのタイプ
-  // can inflict good damage against...
-  console.log(
-    generateAttackChart(playerAttackType).filter(
+  return {
+    hasGoodDefenseAgainst: generateDefenseChart(
+      playerTypeA,
+      playerTypeB
+    ).filter((entry) => entry.damageMultiplierPercent < 100),
+    canInflictGoodDamageAgainst: generateAttackChart(playerAttackType).filter(
       (entry) => entry.damageMultiplierPercent > 100
-    )
-  );
-  // ダメージを受けやすい相手ポケモンのわざのタイプ
-  // has poor defense against...
-  console.log(
-    generateDefenseChart(playerTypeA, playerTypeB).filter(
-      (entry) => entry.damageMultiplierPercent > 100
-    )
-  );
-  // ダメージを与えにくい相手ポケモンのタイプ
-  // can inflict poor damage against...
-  console.log(
-    generateAttackChart(playerAttackType).filter(
+    ),
+    hasPoorDefenseAgainst: generateDefenseChart(
+      playerTypeA,
+      playerTypeB
+    ).filter((entry) => entry.damageMultiplierPercent > 100),
+    canInflictPoorDamageAgainst: generateAttackChart(playerAttackType).filter(
       (entry) => entry.damageMultiplierPercent < 100
-    )
-  );
+    ),
+  };
 };
-
-console.log(
-  "バンギラス（いわ、あく）、アイアンテール（はがね）、だいもんじ（ほのお）の場合の例:"
-);
-console.log();
-console.log("タイプ1: <いわ>, タイプ2: <あく>");
-console.log("このポケモンはこのタイプのわざに強い！");
-console.log(generateDefenseChart("rock", "dark"));
-console.log();
-console.log("わざのタイプ: <はがね>");
-console.log("このわざはこのタイプのポケモンに強い！");
-console.log(generateAttackChart("steel"));
-console.log("総合的なおすすめ:");
-generateRecommendedChart("rock", "dark", "steel");
