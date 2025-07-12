@@ -29,7 +29,7 @@ export function PokemonChip({ children, percentage }: Props) {
   return (
     <div
       style={{ backgroundColor }}
-      className="w-[48px] h-[20px] text-xs/[12px] rounded-full bg-stone-100 shadow-sm flex justify-center items-center"
+      className="w-[48px] h-[20px] text-xs/[12px] rounded-full bg-stone-100 shadow-sm flex justify-center items-center text-black font-bold"
     >
       {children}
     </div>
