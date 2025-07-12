@@ -15,7 +15,7 @@ export function PokemonTypeCard({ children, pokemonType, percentage }: Props) {
         className={`w-[8px] h-full`}
       ></div>
       <div className="flex w-full h-full flex-row items-center justify-between px-[8px]">
-        <div className="text-md/[14px]">{children}</div>
+        <div className="text-sm/[14px]">{children}</div>
         <PokemonChip percentage={percentage}>{`${percentage}%`}</PokemonChip>
       </div>
     </div>
