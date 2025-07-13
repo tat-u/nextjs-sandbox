@@ -5,6 +5,7 @@ import {
   noScalingVector,
   effectivenessTable,
   defensivenessTable,
+  pokemonTypeNone,
 } from "./pokemonDefinitions";
 import { typedObjectKeys } from "./pokemonUtils";
 
@@ -12,11 +13,25 @@ export const getPokemonTypeIndex = (pokemonType: PokemonType): number => {
   return pokemonTypes[pokemonType].index;
 };
 
+export const getPokemonTypeColor = (
+  pokemonType: PokemonType | "none"
+): string => {
+  if (pokemonType === "none") {
+    return pokemonTypeNone.color;
+  } else {
+    return pokemonTypes[pokemonType].color;
+  }
+};
+
 export const getPokemonTypeName = (
-  pokemonType: PokemonType,
+  pokemonType: PokemonType | "none",
   lang: SupportedLanguages
 ): string => {
-  return pokemonTypes[pokemonType].name[lang];
+  if (pokemonType === "none") {
+    return pokemonTypeNone.name[lang];
+  } else {
+    return pokemonTypes[pokemonType].name[lang];
+  }
 };
 
 export const getEffectiveness = (

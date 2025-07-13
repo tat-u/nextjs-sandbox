@@ -210,3 +210,65 @@ export const pokemonTypes: Record<
 } as const;
 
 export type SupportedLanguages = "en" | "ja";
+
+/**
+ * 👇 Localization 👇
+ *
+ * 📌Other than "specific" Pokemon types
+ * 📌Texts for display in the frontend
+ */
+
+export const pokemonTypeNone = {
+  name: { en: "None", ja: "なし" },
+  color: "#ffffff",
+} as const satisfies {
+  name: Record<SupportedLanguages, string>;
+  color: string;
+};
+
+export const qptci18n = {
+  pageTitle: {
+    en: "Quick Pokemon Type Calc",
+    ja: "ざっくりタイプ相性ツール",
+  },
+  strongAgainst: {
+    en: "Strong against",
+    ja: "得意な相手",
+  },
+  weakAgainst: {
+    en: "Weak against",
+    ja: "苦手な相手",
+  },
+  goodDamageAgainst: {
+    en: "Can inflict good damage against",
+    ja: "ダメージが通りやすい相手ポケモン",
+  },
+  goodDefenseAgainst: {
+    en: "Has good defense against",
+    ja: "ダメージを受けにくい相手のわざ",
+  },
+  poorDamageAgainst: {
+    en: "Can inflict poor damage against",
+    ja: "ダメージが通りにくい相手ポケモン",
+  },
+  poorDefenseAgainst: {
+    en: "Has poor defense against",
+    ja: "ダメージを受けやすい相手のわざ",
+  },
+  recommendation: {
+    en: "Recommendation",
+    ja: "おすすめ",
+  },
+  playerTypeA: {
+    en: "Type 1",
+    ja: "タイプ1",
+  },
+  playerTypeB: {
+    en: "Type 2",
+    ja: "タイプ2",
+  },
+  attackType: {
+    en: "Move type",
+    ja: "わざのタイプ",
+  },
+};

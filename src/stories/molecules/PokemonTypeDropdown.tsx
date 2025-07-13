@@ -1,5 +1,6 @@
 import {
   PokemonType,
+  pokemonTypeNone,
   pokemonTypes,
   SupportedLanguages,
 } from "@/models/pokemonDefinitions";
@@ -25,7 +26,7 @@ export function PokemonTypeDropdown({
   handleChange,
 }: Props) {
   const options = [
-    { id: "none", name: "なし" },
+    { id: "none", name: pokemonTypeNone.name[lang] },
     ...typedObjectKeys(pokemonTypes).map((key) => ({
       id: key,
       name: getPokemonTypeName(key, lang),
@@ -35,7 +36,9 @@ export function PokemonTypeDropdown({
   return (
     <div className="d-dropdown d-dropdown-center">
       <div tabIndex={0} role="button" className="d-btn m-1 w-[100px]">
-        {currentChecked ? getPokemonTypeName(currentChecked, lang) : "なし"}
+        {currentChecked
+          ? getPokemonTypeName(currentChecked, lang)
+          : pokemonTypeNone.name[lang]}
       </div>
       <ul
         tabIndex={0}
