@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { isAvailableLanguage, SupportedLanguages } from "./lang";
 
 export const useLang = () => {
-  const [lang, setLang] = useState<SupportedLanguages>("en");
+  const [lang, setLang] = useState<SupportedLanguages>("ja");
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang");
