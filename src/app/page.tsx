@@ -13,7 +13,7 @@ import {
   SupportedLanguages,
 } from "@/models/pokemonDefinitions";
 import { ThemeController } from "@/stories/atoms/ThemeController";
-import { PokemonDropdown } from "@/stories/atoms/PokemonDropdown";
+import { PokemonDropdown } from "@/stories/molecules/PokemonDropdown";
 import { useState } from "react";
 import { typedObjectKeys, isPokemonType } from "@/models/pokemonUtils";
 

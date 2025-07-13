@@ -15,11 +15,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Example: Story = {
   args: {
+    label: "Normal",
     name: "pokemon_type",
     options: [
       { id: "normal", name: "Normal" },
       { id: "fire", name: "Fire" },
     ],
+    checkedId: "normal",
     handleChange: () => {},
   },
 };
