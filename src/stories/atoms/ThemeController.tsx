@@ -29,7 +29,7 @@ export function ThemeController() {
             <input
               type="radio"
               name="theme-dropdown"
-              className="theme-controller w-full d-btn d-btn-sm d-btn-block d-btn-ghost justify-start"
+              className="theme-controller w-full d-btn d-btn-sm d-btn-ghost justify-start"
               aria-label={theme.name}
               value={theme.id}
             />
