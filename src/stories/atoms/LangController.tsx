@@ -10,6 +10,8 @@ type Props = {
 
 /**
  * This component requires daisyUI to be installed in your project.
+ *
+ * SIDE EFFECT: LocalStorage
  */
 export function LangController({ handleChange }: Props) {
   return (

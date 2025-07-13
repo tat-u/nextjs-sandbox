@@ -2,6 +2,8 @@ import { themes } from "@/models/themes";
 
 /**
  * This component requires daisyUI to be installed in your project.
+ *
+ * SIDE EFFECT: LocalStorage
  */
 export function ThemeController() {
   // WARN: なぜか daisyUI config で指定した prefix が反映されないため、一旦 "d-" prefix なしとする
