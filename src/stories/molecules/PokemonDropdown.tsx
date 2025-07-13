@@ -30,7 +30,7 @@ export function PokemonDropdown({
             <input
               type="radio"
               name={name}
-              className="w-full d-btn d-btn-sm d-btn-block d-btn-ghost justify-start checked:outline-2 checked:text-shadow-lg"
+              className="w-full d-btn d-btn-sm d-btn-block d-btn-ghost justify-start checked:outline-2"
               aria-label={option.name}
               value={option.id}
               onChange={(e) => {
