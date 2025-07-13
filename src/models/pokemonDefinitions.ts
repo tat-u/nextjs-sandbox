@@ -1,40 +1,28 @@
-export type PokemonType =
-  // 0
-  | "normal"
-  // 1
-  | "fire"
-  // 2
-  | "water"
-  // 3
-  | "electric"
-  // 4
-  | "grass"
-  // 5
-  | "ice"
-  // 6
-  | "fighting"
-  // 7
-  | "poison"
-  // 8
-  | "ground"
-  // 9
-  | "flying"
-  // 10
-  | "psychic"
-  // 11
-  | "bug"
-  // 12
-  | "rock"
-  // 13
-  | "ghost"
-  // 14
-  | "dragon"
-  // 15
-  | "dark"
-  // 16
-  | "steel"
-  // 17
-  | "fairy";
+/**
+ * NOTE: Should be imported in this module only
+ */
+export const _pokemonTypes = [
+  "normal", // 0
+  "fire", // 1
+  "water", // 2
+  "electric", // 3
+  "grass", // 4
+  "ice", // 5
+  "fighting", // 6
+  "poison", // 7
+  "ground", // 8
+  "flying", // 9
+  "psychic", // 10
+  "bug", // 11
+  "rock", // 12
+  "ghost", // 13
+  "dragon", // 14
+  "dark", // 15
+  "steel", // 16
+  "fairy", // 17
+] as const;
+
+export type PokemonType = (typeof _pokemonTypes)[number];
 
 export type Vector18 = [
   number, // 0
