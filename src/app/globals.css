@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: bumblebee, --default, halloween --prefersdark, lofi, valentine,
+  themes: bumblebee --default, halloween --prefersdark, lofi, valentine,
     caramellatte, autumn, aqua, synthwave, night;
   prefix: "d-";
 }
