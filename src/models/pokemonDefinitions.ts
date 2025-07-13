@@ -256,8 +256,16 @@ export const pokemonI18n = {
     ja: "ダメージを受けやすい相手のわざ",
   },
   recommendation: {
-    en: "Recommendation",
-    ja: "おすすめ",
+    en: "Rough suggestions",
+    ja: "おすすめの相手",
+  },
+  recommendationA: {
+    en: "Opponent's type",
+    ja: "相手ポケモンのタイプ",
+  },
+  recommendationB: {
+    en: "Opponent's move type",
+    ja: "相手のわざのタイプ",
   },
   playerTypeA: {
     en: "Type 1",

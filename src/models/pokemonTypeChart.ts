@@ -128,20 +128,48 @@ export const generateRecommendedChart = (
   playerTypeB: PokemonType | null,
   playerAttackType: PokemonType
 ) => {
+  const hasGoodDefenseAgainst = generateDefenseChart(
+    playerTypeA,
+    playerTypeB
+  ).filter((entry) => entry.damageMultiplierPercent < 100);
+  const canInflictGoodDamageAgainst = generateAttackChart(
+    playerAttackType
+  ).filter((entry) => entry.damageMultiplierPercent > 100);
+  const hasPoorDefenseAgainst = generateDefenseChart(
+    playerTypeA,
+    playerTypeB
+  ).filter((entry) => entry.damageMultiplierPercent > 100);
+  const canInflictPoorDamageAgainst = generateAttackChart(
+    playerAttackType
+  ).filter((entry) => entry.damageMultiplierPercent < 100);
+  // Recommendation
+  const { gDmgFiltered: recommendationA, gDefFiltered: recommendationB } =
+    calcRecommendation(
+      JSON.parse(JSON.stringify(canInflictGoodDamageAgainst)),
+      JSON.parse(JSON.stringify(hasGoodDefenseAgainst)),
+      JSON.parse(JSON.stringify(canInflictPoorDamageAgainst)),
+      JSON.parse(JSON.stringify(hasPoorDefenseAgainst))
+    );
+
   return {
-    hasGoodDefenseAgainst: generateDefenseChart(
-      playerTypeA,
-      playerTypeB
-    ).filter((entry) => entry.damageMultiplierPercent < 100),
-    canInflictGoodDamageAgainst: generateAttackChart(playerAttackType).filter(
-      (entry) => entry.damageMultiplierPercent > 100
-    ),
-    hasPoorDefenseAgainst: generateDefenseChart(
-      playerTypeA,
-      playerTypeB
-    ).filter((entry) => entry.damageMultiplierPercent > 100),
-    canInflictPoorDamageAgainst: generateAttackChart(playerAttackType).filter(
-      (entry) => entry.damageMultiplierPercent < 100
-    ),
+    hasGoodDefenseAgainst,
+    canInflictGoodDamageAgainst,
+    hasPoorDefenseAgainst,
+    canInflictPoorDamageAgainst,
+    recommendationA,
+    recommendationB,
   };
+};
+
+// PRIVATE
+// TODO: REFACTOR this to be more readable, typed, and efficient
+const calcRecommendation = (gDmg, gDef, pDmg, pDef) => {
+  const excludeTypes = pDmg.concat(pDef).map((e) => e.pokemonType);
+  const gDmgFiltered = gDmg.filter(
+    (e) => !excludeTypes.includes(e.pokemonType)
+  );
+  const gDefFiltered = gDef.filter(
+    (e) => !excludeTypes.includes(e.pokemonType)
+  );
+  return { gDmgFiltered, gDefFiltered };
 };

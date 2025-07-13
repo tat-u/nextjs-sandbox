@@ -43,6 +43,8 @@ export default function Home() {
     canInflictGoodDamageAgainst,
     hasPoorDefenseAgainst,
     canInflictPoorDamageAgainst,
+    recommendationA,
+    recommendationB,
   } = generateRecommendedChart(playerTypeA, playerTypeB, playerAttackType);
 
   return (
@@ -142,6 +144,31 @@ export default function Home() {
         ))}
       </div>
       <PokemonH1>{pokemonI18n.recommendation[lang]}</PokemonH1>
+      <PokemonH2>{pokemonI18n.recommendationA[lang]}</PokemonH2>
+      <div className="flex flex-wrap gap-2 justify-around ">
+        {recommendationA.map((entry) => (
+          <PokemonTypeCard
+            key={entry.pokemonType}
+            pokemonType={entry.pokemonType}
+            percentage={entry.damageMultiplierPercent}
+          >
+            {getPokemonTypeName(entry.pokemonType, lang)}
+          </PokemonTypeCard>
+        ))}
+      </div>
+      <PokemonH2>{pokemonI18n.recommendationB[lang]}</PokemonH2>
+      <div className="flex flex-wrap gap-2 justify-around ">
+        {recommendationB.map((entry) => (
+          <PokemonTypeCard
+            key={entry.pokemonType}
+            pokemonType={entry.pokemonType}
+            percentage={entry.damageMultiplierPercent}
+          >
+            {getPokemonTypeName(entry.pokemonType, lang)}
+          </PokemonTypeCard>
+        ))}
+      </div>
+      <div className="my-10"></div>
     </>
   );
 }
