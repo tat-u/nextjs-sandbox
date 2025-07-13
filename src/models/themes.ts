@@ -11,3 +11,7 @@ export const themes = {
 } as const;
 
 export type Theme = keyof typeof themes;
+
+export const isAvailableTheme = (theme: string): theme is Theme => {
+  return Object.keys(themes).includes(theme);
+};

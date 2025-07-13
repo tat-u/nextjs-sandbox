@@ -1,6 +1,9 @@
+"use client";
+
 import "./globals.css";
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ReactNode } from "react";
+import { useTheme } from "@/models/useTheme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,18 +15,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Pokemon Type Chart",
-  description: "tat-u's pokemon type chart!",
-};
+// TODO: Add metadata as pure HTML
+// export const metadata: Metadata = {
+//   title: "Pokemon Type Chart",
+//   description: "tat-u's pokemon type chart!",
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+  const theme = useTheme();
+
   return (
-    <html lang="ja">
+    <html lang="ja" data-theme={theme}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[800px] mx-auto px-[16px]`}
       >

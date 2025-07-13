@@ -32,6 +32,10 @@ export function ThemeController() {
               className="theme-controller w-full d-btn d-btn-sm d-btn-ghost justify-start"
               aria-label={theme.name}
               value={theme.id}
+              onChange={(e) => {
+                // NOTE: Accessing localStorage in here is actually safe, because onChange is called in the browser context
+                localStorage.setItem("theme", e.target.value);
+              }}
             />
           </li>
         ))}
