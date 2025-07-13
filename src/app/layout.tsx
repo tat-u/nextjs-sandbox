@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Next.js Sandbox",
-  description: "Hello, world",
+  title: "Pokemon Type Chart",
+  description: "tat-u's pokemon type chart!",
 };
 
 export default function RootLayout({

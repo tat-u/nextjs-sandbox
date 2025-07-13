@@ -62,28 +62,46 @@ export default function Home() {
 
   return (
     <>
-      <ThemeController />
+      <div className="flex items-center justify-between">
+        <span className="text-shadow-lg/10 font-bold">
+          Quick Pokemon Type Calc
+        </span>
+        <ThemeController />
+      </div>
+      <div className="d-divider mt-0 mb-10 h-fit"></div>
 
-      <div>ここに選択するメニューが来る</div>
-      <div>タイプ1: {playerTypeA}</div>
-      <div>タイプ2: {playerTypeB}</div>
-      <div>わざ: {playerAttackType}</div>
-
-      <PokemonDropdown
-        name="player_type_a"
-        options={options}
-        handleChange={(value) => handlePlayerTypeAChange(value)}
-      />
-      <PokemonDropdown
-        name="player_type_b"
-        options={[{ id: "none", name: "なし" }, ...options]}
-        handleChange={(value) => handlePlayerTypeBChange(value)}
-      />
-      <PokemonDropdown
-        name="player_attack_type"
-        options={options}
-        handleChange={(value) => handlePlayerAttackTypeChange(value)}
-      />
+      <div className="flex justify-between">
+        <div className="flex flex-col items-center">
+          タイプ1
+          <PokemonDropdown
+            label={getPokemonTypeName(playerTypeA, lang)}
+            name="player_type_a"
+            options={options}
+            checkedId={playerTypeA}
+            handleChange={(value) => handlePlayerTypeAChange(value)}
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          タイプ2
+          <PokemonDropdown
+            label={playerTypeB ? getPokemonTypeName(playerTypeB, lang) : "なし"}
+            name="player_type_b"
+            options={[{ id: "none", name: "なし" }, ...options]}
+            checkedId={playerTypeB ? playerTypeB : "none"}
+            handleChange={(value) => handlePlayerTypeBChange(value)}
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          わざのタイプ
+          <PokemonDropdown
+            label={getPokemonTypeName(playerAttackType, lang)}
+            name="player_attack_type"
+            options={options}
+            checkedId={playerAttackType}
+            handleChange={(value) => handlePlayerAttackTypeChange(value)}
+          />
+        </div>
+      </div>
 
       <PokemonH1>得意な相手ポケモン</PokemonH1>
       <PokemonH2>ダメージが入りやすい相手</PokemonH2>
