@@ -7,16 +7,16 @@ import {
   generateRecommendedChart,
   getPokemonTypeName,
 } from "@/models/pokemonTypeChart";
-import {
-  PokemonType,
-  SupportedLanguages,
-  qptci18n,
-} from "@/models/pokemonDefinitions";
+import { PokemonType, qptci18n } from "@/models/pokemonDefinitions";
 import { ThemeController } from "@/stories/atoms/ThemeController";
 import { PokemonTypeDropdown } from "@/stories/molecules/PokemonTypeDropdown";
 import { useState } from "react";
+import { useLang } from "@/models/useLang";
+import { LangController } from "@/stories/atoms/LangController";
 
 export default function Home() {
+  const { lang, setLang } = useLang();
+
   const [playerTypeA, setPlayerTypeA] = useState<PokemonType>("normal");
   const [playerTypeB, setPlayerTypeB] = useState<PokemonType | null>(null);
   const [playerAttackType, setPlayerAttackType] =
@@ -44,17 +44,16 @@ export default function Home() {
     hasPoorDefenseAgainst,
     canInflictPoorDamageAgainst,
   } = generateRecommendedChart(playerTypeA, playerTypeB, playerAttackType);
-  const lang = "en" satisfies SupportedLanguages;
 
   return (
     <>
       <div className="flex items-center justify-between">
         <span className="text-shadow-lg/10 font-bold">
-          Quick Pokemon Type Calc
+          {qptci18n.pageTitle[lang]}
         </span>
         <div>
           <ThemeController />
-          {lang}
+          <LangController handleChange={setLang} />
         </div>
       </div>
       <div className="d-divider mt-0 mb-10 h-fit"></div>

@@ -209,14 +209,14 @@ export const pokemonTypes: Record<
   },
 } as const;
 
-export type SupportedLanguages = "en" | "ja";
-
 /**
  * 👇 Localization 👇
  *
  * 📌Other than "specific" Pokemon types
  * 📌Texts for display in the frontend
  */
+
+export type SupportedLanguages = "en" | "ja";
 
 export const pokemonTypeNone = {
   name: { en: "None", ja: "なし" },

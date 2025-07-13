@@ -4,6 +4,8 @@ import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ReactNode } from "react";
 import { useTheme } from "@/models/useTheme";
+import { qptci18n } from "@/models/pokemonDefinitions";
+import { useLang } from "@/models/useLang";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,21 +17,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: Add metadata as pure HTML
-// export const metadata: Metadata = {
-//   title: "Pokemon Type Chart",
-//   description: "tat-u's pokemon type chart!",
-// };
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
   const theme = useTheme();
+  const { lang } = useLang();
 
   return (
-    <html lang="ja" data-theme={theme}>
+    <html lang={lang} data-theme={theme}>
+      <title>{qptci18n.pageTitle[lang]}</title>
+      <meta name="description" content="tat-u's easy pokemon tool!" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[800px] mx-auto px-[16px]`}
       >
