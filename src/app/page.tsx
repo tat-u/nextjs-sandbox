@@ -7,11 +7,14 @@ import {
   generateRecommendedChart,
   getPokemonTypeName,
 } from "@/models/pokemonTypeChart";
-import { PokemonType, SupportedLanguages } from "@/models/pokemonDefinitions";
+import {
+  PokemonType,
+  SupportedLanguages,
+  qptci18n,
+} from "@/models/pokemonDefinitions";
 import { ThemeController } from "@/stories/atoms/ThemeController";
 import { PokemonTypeDropdown } from "@/stories/molecules/PokemonTypeDropdown";
 import { useState } from "react";
-import { isPokemonType } from "@/models/pokemonUtils";
 
 export default function Home() {
   const [playerTypeA, setPlayerTypeA] = useState<PokemonType>("normal");
@@ -41,7 +44,7 @@ export default function Home() {
     hasPoorDefenseAgainst,
     canInflictPoorDamageAgainst,
   } = generateRecommendedChart(playerTypeA, playerTypeB, playerAttackType);
-  const lang = "ja" satisfies SupportedLanguages;
+  const lang = "en" satisfies SupportedLanguages;
 
   return (
     <>
@@ -49,13 +52,16 @@ export default function Home() {
         <span className="text-shadow-lg/10 font-bold">
           Quick Pokemon Type Calc
         </span>
-        <ThemeController />
+        <div>
+          <ThemeController />
+          {lang}
+        </div>
       </div>
       <div className="d-divider mt-0 mb-10 h-fit"></div>
 
       <div className="flex justify-between">
         <div className="flex flex-col items-center">
-          タイプ1
+          {qptci18n.playerTypeA[lang]}
           <PokemonTypeDropdown
             name="player_type_a"
             currentChecked={playerTypeA}
@@ -65,7 +71,7 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col items-center">
-          タイプ2
+          {qptci18n.playerTypeB[lang]}
           <PokemonTypeDropdown
             name="player_type_b"
             currentChecked={playerTypeB}
@@ -75,7 +81,7 @@ export default function Home() {
           />
         </div>
         <div className="flex flex-col items-center">
-          わざのタイプ
+          {qptci18n.attackType[lang]}
           <PokemonTypeDropdown
             name="player_attack_type"
             currentChecked={playerAttackType}
@@ -86,8 +92,8 @@ export default function Home() {
         </div>
       </div>
 
-      <PokemonH1>得意な相手ポケモン</PokemonH1>
-      <PokemonH2>ダメージが入りやすい相手</PokemonH2>
+      <PokemonH1>{qptci18n.strongAgainst[lang]}</PokemonH1>
+      <PokemonH2>{qptci18n.goodDamageAgainst[lang]}</PokemonH2>
       <div className="flex flex-wrap gap-2 justify-around ">
         {canInflictGoodDamageAgainst.map((entry) => (
           <PokemonTypeCard
@@ -99,7 +105,7 @@ export default function Home() {
           </PokemonTypeCard>
         ))}
       </div>
-      <PokemonH2>受けるダメージが少ないわざ</PokemonH2>
+      <PokemonH2>{qptci18n.goodDefenseAgainst[lang]}</PokemonH2>
       <div className="flex flex-wrap gap-2 justify-around">
         {hasGoodDefenseAgainst.map((entry) => (
           <PokemonTypeCard
@@ -111,8 +117,8 @@ export default function Home() {
           </PokemonTypeCard>
         ))}
       </div>
-      <PokemonH1>苦手な相手ポケモン</PokemonH1>
-      <PokemonH2>ダメージが入りにくい相手</PokemonH2>
+      <PokemonH1>{qptci18n.weakAgainst[lang]}</PokemonH1>
+      <PokemonH2>{qptci18n.poorDamageAgainst[lang]}</PokemonH2>
       <div className="flex flex-wrap gap-2 justify-around ">
         {canInflictPoorDamageAgainst.map((entry) => (
           <PokemonTypeCard
@@ -124,7 +130,7 @@ export default function Home() {
           </PokemonTypeCard>
         ))}
       </div>
-      <PokemonH2>受けるダメージが多いわざ</PokemonH2>
+      <PokemonH2>{qptci18n.poorDefenseAgainst[lang]}</PokemonH2>
       <div className="flex flex-wrap gap-2 justify-around ">
         {hasPoorDefenseAgainst.map((entry) => (
           <PokemonTypeCard
@@ -136,6 +142,7 @@ export default function Home() {
           </PokemonTypeCard>
         ))}
       </div>
+      <PokemonH1>{qptci18n.recommendation[lang]}</PokemonH1>
     </>
   );
 }
