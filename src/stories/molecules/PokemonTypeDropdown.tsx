@@ -5,12 +5,16 @@ import {
   SupportedLanguages,
 } from "@/models/pokemonDefinitions";
 import { getPokemonTypeName } from "@/models/pokemonTypeChart";
-import { isPokemonType, typedObjectKeys } from "@/models/pokemonUtils";
+import {
+  isPokemonType,
+  typedObjectKeys,
+  unTypedIncludes,
+} from "@/models/pokemonUtils";
 
 type Props = {
   name: string;
   currentChecked: PokemonType | null;
-  allowNone: boolean;
+  excludeTypes: (PokemonType | null)[];
   lang: SupportedLanguages;
   handleChange: (value: PokemonType | null) => void;
 };
@@ -21,7 +25,7 @@ type Props = {
 export function PokemonTypeDropdown({
   name,
   currentChecked,
-  allowNone,
+  excludeTypes,
   lang,
   handleChange,
 }: Props) {
@@ -64,7 +68,11 @@ export function PokemonTypeDropdown({
                   ? currentChecked === null
                   : currentChecked === option.id
               }
-              disabled={option.id === "none" && !allowNone}
+              disabled={
+                option.id === "none"
+                  ? unTypedIncludes(excludeTypes, null)
+                  : unTypedIncludes(excludeTypes, option.id)
+              }
             />
           </li>
         ))}

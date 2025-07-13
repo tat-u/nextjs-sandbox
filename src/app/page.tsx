@@ -64,7 +64,7 @@ export default function Home() {
           <PokemonTypeDropdown
             name="player_type_a"
             currentChecked={playerTypeA}
-            allowNone={false}
+            excludeTypes={[null, playerTypeB]}
             lang={lang}
             handleChange={handlePlayerTypeAChange}
           />
@@ -74,7 +74,7 @@ export default function Home() {
           <PokemonTypeDropdown
             name="player_type_b"
             currentChecked={playerTypeB}
-            allowNone={true}
+            excludeTypes={[playerTypeA]}
             lang={lang}
             handleChange={handlePlayerTypeBChange}
           />
@@ -84,7 +84,7 @@ export default function Home() {
           <PokemonTypeDropdown
             name="player_attack_type"
             currentChecked={playerAttackType}
-            allowNone={false}
+            excludeTypes={[null]}
             lang={lang}
             handleChange={handlePlayerAttackTypeChange}
           />
