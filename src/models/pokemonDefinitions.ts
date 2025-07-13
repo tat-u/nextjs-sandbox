@@ -228,7 +228,7 @@ export const pokemonTypeNone = {
 
 export const pokemonI18n = {
   pageTitle: {
-    en: "Quick Pokemon Type Calc",
+    en: "Quick type matchups",
     ja: "ざっくりタイプ相性ツール",
   },
   strongAgainst: {

@@ -1,10 +1,7 @@
-"use client";
-
 import "./globals.css";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ReactNode } from "react";
-import { pokemonI18n } from "@/models/pokemonDefinitions";
-import { useLang } from "@/models/useLang";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,22 +13,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "Pokemon type matchups",
+  description: "A tool for Pokemon beginners to quickly check type matchups.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const { lang } = useLang();
-
   return (
     // WARN: Suppress hydration warning to forcibly set the theme on the client side.
     <html suppressHydrationWarning>
-      <title>{pokemonI18n.pageTitle[lang]}</title>
-      <meta name="description" content="tat-u's easy pokemon tool!" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[800px] mx-auto px-[16px]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[600px] mx-auto px-[16px]`}
       >
         {/* WARN: Maybe need to sanitize */}
+        {/* TODO: Investigate when the script is executed */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
