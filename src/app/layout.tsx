@@ -3,7 +3,7 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ReactNode } from "react";
-import { qptci18n } from "@/models/pokemonDefinitions";
+import { pokemonI18n } from "@/models/pokemonDefinitions";
 import { useLang } from "@/models/useLang";
 
 const geistSans = Geist({
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     // WARN: Suppress hydration warning to forcibly set the theme on the client side.
     <html suppressHydrationWarning>
-      <title>{qptci18n.pageTitle[lang]}</title>
+      <title>{pokemonI18n.pageTitle[lang]}</title>
       <meta name="description" content="tat-u's easy pokemon tool!" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[800px] mx-auto px-[16px]`}

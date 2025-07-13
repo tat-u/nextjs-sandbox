@@ -226,7 +226,7 @@ export const pokemonTypeNone = {
   color: string;
 };
 
-export const qptci18n = {
+export const pokemonI18n = {
   pageTitle: {
     en: "Quick Pokemon Type Calc",
     ja: "ざっくりタイプ相性ツール",
