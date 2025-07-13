@@ -7,15 +7,11 @@ import {
   generateRecommendedChart,
   getPokemonTypeName,
 } from "@/models/pokemonTypeChart";
-import {
-  PokemonType,
-  pokemonTypes,
-  SupportedLanguages,
-} from "@/models/pokemonDefinitions";
+import { PokemonType, SupportedLanguages } from "@/models/pokemonDefinitions";
 import { ThemeController } from "@/stories/atoms/ThemeController";
-import { PokemonDropdown } from "@/stories/molecules/PokemonDropdown";
+import { PokemonTypeDropdown } from "@/stories/molecules/PokemonTypeDropdown";
 import { useState } from "react";
-import { typedObjectKeys, isPokemonType } from "@/models/pokemonUtils";
+import { isPokemonType } from "@/models/pokemonUtils";
 
 export default function Home() {
   const [playerTypeA, setPlayerTypeA] = useState<PokemonType>("normal");
@@ -23,28 +19,20 @@ export default function Home() {
   const [playerAttackType, setPlayerAttackType] =
     useState<PokemonType>("normal");
 
-  const handlePlayerTypeAChange = (value: string) => {
-    if (isPokemonType(value)) {
-      setPlayerTypeA(value);
-    } else {
+  const handlePlayerTypeAChange = (value: PokemonType | null) => {
+    if (value === null) {
       throw new Error();
     }
+    setPlayerTypeA(value);
   };
-  const handlePlayerTypeBChange = (value: string) => {
-    if (isPokemonType(value)) {
-      setPlayerTypeB(value);
-    } else if (value === "none") {
-      setPlayerTypeB(null);
-    } else {
-      throw new Error();
-    }
+  const handlePlayerTypeBChange = (value: PokemonType | null) => {
+    setPlayerTypeB(value);
   };
-  const handlePlayerAttackTypeChange = (value: string) => {
-    if (isPokemonType(value)) {
-      setPlayerAttackType(value);
-    } else {
+  const handlePlayerAttackTypeChange = (value: PokemonType | null) => {
+    if (value === null) {
       throw new Error();
     }
+    setPlayerAttackType(value);
   };
 
   const {
@@ -54,11 +42,6 @@ export default function Home() {
     canInflictPoorDamageAgainst,
   } = generateRecommendedChart(playerTypeA, playerTypeB, playerAttackType);
   const lang = "ja" satisfies SupportedLanguages;
-
-  const options = typedObjectKeys(pokemonTypes).map((key) => ({
-    id: key,
-    name: getPokemonTypeName(key, lang),
-  }));
 
   return (
     <>
@@ -73,32 +56,32 @@ export default function Home() {
       <div className="flex justify-between">
         <div className="flex flex-col items-center">
           タイプ1
-          <PokemonDropdown
-            label={getPokemonTypeName(playerTypeA, lang)}
+          <PokemonTypeDropdown
             name="player_type_a"
-            options={options}
-            checkedId={playerTypeA}
-            handleChange={(value) => handlePlayerTypeAChange(value)}
+            currentChecked={playerTypeA}
+            allowNone={false}
+            lang={lang}
+            handleChange={handlePlayerTypeAChange}
           />
         </div>
         <div className="flex flex-col items-center">
           タイプ2
-          <PokemonDropdown
-            label={playerTypeB ? getPokemonTypeName(playerTypeB, lang) : "なし"}
+          <PokemonTypeDropdown
             name="player_type_b"
-            options={[{ id: "none", name: "なし" }, ...options]}
-            checkedId={playerTypeB ? playerTypeB : "none"}
-            handleChange={(value) => handlePlayerTypeBChange(value)}
+            currentChecked={playerTypeB}
+            allowNone={true}
+            lang={lang}
+            handleChange={handlePlayerTypeBChange}
           />
         </div>
         <div className="flex flex-col items-center">
           わざのタイプ
-          <PokemonDropdown
-            label={getPokemonTypeName(playerAttackType, lang)}
+          <PokemonTypeDropdown
             name="player_attack_type"
-            options={options}
-            checkedId={playerAttackType}
-            handleChange={(value) => handlePlayerAttackTypeChange(value)}
+            currentChecked={playerAttackType}
+            allowNone={false}
+            lang={lang}
+            handleChange={handlePlayerAttackTypeChange}
           />
         </div>
       </div>
