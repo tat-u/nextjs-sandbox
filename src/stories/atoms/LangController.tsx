@@ -1,19 +1,10 @@
-import {
-  isAvailableLanguage,
-  languages,
-  SupportedLanguages,
-} from "@/models/lang";
-
-type Props = {
-  handleChange: (lang: SupportedLanguages) => void;
-};
+import { languages } from "@/models/lang";
+import Link from "next/link";
 
 /**
  * This component requires daisyUI to be installed in your project.
- *
- * SIDE EFFECT: LocalStorage
  */
-export function LangController({ handleChange }: Props) {
+export function LangController() {
   return (
     <div className="d-dropdown d-dropdown-end">
       <div tabIndex={0} role="button" className="d-btn m-1">
@@ -33,19 +24,15 @@ export function LangController({ handleChange }: Props) {
       >
         {Object.entries(languages).map(([key, lang]) => (
           <li key={key}>
-            <input
-              type="radio"
-              name="lang"
-              className="w-full d-btn d-btn-sm d-btn-ghost justify-start"
-              aria-label={lang.name}
-              value={lang.id}
-              onChange={(e) => {
-                localStorage.setItem("lang", e.target.value);
-                if (isAvailableLanguage(e.target.value)) {
-                  handleChange(e.target.value);
-                }
-              }}
-            />
+            <Link href={`/?lang=${lang.id}`}>
+              <input
+                type="radio"
+                name="lang"
+                className="w-full d-btn d-btn-sm d-btn-ghost justify-start"
+                aria-label={lang.name}
+                value={lang.id}
+              />
+            </Link>
           </li>
         ))}
       </ul>

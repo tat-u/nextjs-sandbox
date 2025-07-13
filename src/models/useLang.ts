@@ -1,17 +1,10 @@
-import { useState, useEffect } from "react";
-import { isAvailableLanguage, SupportedLanguages } from "./lang";
+import { useSearchParams } from "next/navigation";
+import { isAvailableLanguage } from "./lang";
 
 export const useLang = () => {
-  const [lang, setLang] = useState<SupportedLanguages>("ja");
+  const searchParams = useSearchParams();
+  const langParam = searchParams.get("lang") || "ja";
+  const lang = isAvailableLanguage(langParam) ? langParam : "ja";
 
-  useEffect(() => {
-    const savedLang = localStorage.getItem("lang");
-    if (savedLang === null) {
-      return;
-    } else if (isAvailableLanguage(savedLang)) {
-      setLang(savedLang);
-    }
-  }, [lang]);
-
-  return { lang, setLang };
+  return { lang };
 };

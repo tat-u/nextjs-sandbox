@@ -15,7 +15,7 @@ import { useLang } from "@/models/useLang";
 import { LangController } from "@/stories/atoms/LangController";
 
 export default function Home() {
-  const { lang, setLang } = useLang();
+  const { lang } = useLang();
 
   const [playerTypeA, setPlayerTypeA] = useState<PokemonType>("normal");
   const [playerTypeB, setPlayerTypeB] = useState<PokemonType | null>(null);
@@ -53,7 +53,7 @@ export default function Home() {
         </span>
         <div>
           <ThemeController />
-          <LangController handleChange={setLang} />
+          <LangController />
         </div>
       </div>
       <div className="d-divider mt-0 mb-10 h-fit"></div>
