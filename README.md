@@ -1,16 +1,3 @@
-# Packages
+# Credits
 
-Node.js v22.17.0
-
-```
-npx create-next-app@latest
-npm create storybook@latest
-npm install react-hook-form
-npm install zod
-
-// Integrate Tailwind CSS with Storybook
-npx storybook@latest add @storybook/addon-styling-webpack
-
-// Integrate Zod with React Hook Form
-npm install @hookform/resolvers
-```
+This repository previously included code from the [Learn Next.js](https://nextjs.org/learn) tutorial. All rights belong to Vercel. Licensed under the MIT License.
