@@ -1,5 +1,5 @@
-import { ReminderForm } from "@/stories/features/ReminderForm";
-
-export default function Home() {
-  return <ReminderForm />;
+export default function Page() {
+  return <div>Hello, world!</div>;
 }
+
+// TODO: Navigation to other pages should be implemented here
