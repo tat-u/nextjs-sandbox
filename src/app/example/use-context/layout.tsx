@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Counter } from "@/stories/molecules/Counter";
 
 export const metadata: Metadata = {
-  title: "useState Example",
-  description: "An example of using useState in Next.js",
+  title: "useContext Example",
+  description: "An example of using useContext in Next.js",
 };
 
 export default function Layout({
@@ -13,7 +12,6 @@ export default function Layout({
 }>) {
   return (
     <>
-      <Counter />
       <div>{children}</div>
     </>
   );

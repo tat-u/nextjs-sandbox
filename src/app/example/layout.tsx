@@ -36,6 +36,13 @@ export default function RootLayout({
               </div>
             </Link>
           </li>
+          <li>
+            <Link href="/example/use-context">
+              <div className="h-full flex">
+                <span className="m-auto">useContext</span>
+              </div>
+            </Link>
+          </li>
         </ul>
       </div>
       <div>{children}</div>
