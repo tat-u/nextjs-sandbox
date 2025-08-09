@@ -1,5 +1,5 @@
 "use client";
-import { PanelLeft, PanelLeftClose } from "lucide-react";
+import { PanelLeftOpen, PanelLeftClose } from "lucide-react";
 import { useSidebar } from "@/context/sidebar-context";
 
 const Button = () => {
@@ -14,7 +14,7 @@ const Button = () => {
       {isExpanded ? (
         <PanelLeftClose className="size-6 text-stone-800" />
       ) : (
-        <PanelLeft className="size-6 text-stone-800" />
+        <PanelLeftOpen className="size-6 text-stone-800" />
       )}
     </button>
   );
