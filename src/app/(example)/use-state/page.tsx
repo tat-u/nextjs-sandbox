@@ -2,8 +2,10 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div>
-      <Link href="/use-state/different-page">Go to different page</Link>
-    </div>
+    <>
+      <Link href="/use-state/different-page" className="row-start-3">
+        Go to different page
+      </Link>
+    </>
   );
 }
