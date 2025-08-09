@@ -2,10 +2,19 @@
 import { useSidebar } from "@/context/sidebar-context";
 import { cn } from "@/lib/common";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const LinkItem = ({ href, label }: { href: string; label: string }) => {
+  const pathname = usePathname();
+  const isActive = pathname.startsWith(href);
+
   return (
-    <li className="text-stone-800 hover:text-amber-600">
+    <li
+      className={cn(
+        "text-stone-800 hover:text-amber-600",
+        isActive && "font-bold text-amber-600"
+      )}
+    >
       <Link href={href} className="block py-2">
         <span className="block text-sm">{label}</span>
       </Link>
@@ -16,11 +25,7 @@ const LinkItem = ({ href, label }: { href: string; label: string }) => {
 const LinkList = () => {
   return (
     <ul>
-      <LinkItem href="/" label="Home" />
-      <LinkItem href="/" label="Use Context" />
-      <LinkItem href="/" label="Use Context" />
-      <LinkItem href="/" label="Use Context" />
-      <LinkItem href="/" label="Use Context" />
+      <LinkItem href="/use-state" label="useState" />
     </ul>
   );
 };

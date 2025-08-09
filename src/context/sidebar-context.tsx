@@ -35,5 +35,9 @@ export const useSidebar = () => {
 export const SidebarAwareMain = ({ children }: { children: ReactNode }) => {
   const { isExpanded } = useSidebar();
 
-  return <main className={cn(isExpanded && "pl-40")}>{children}</main>;
+  return (
+    <main className={cn("transition-all duration-200", isExpanded && "pl-40")}>
+      {children}
+    </main>
+  );
 };
