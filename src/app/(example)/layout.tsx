@@ -1,5 +1,5 @@
-import { AppHeader } from "@/component/app-header/app-header";
-import { AppSidebar } from "@/component/app-sidebar/app-sidebar";
+import { AppHeader } from "@/component/feature/app-header/app-header";
+import { AppSidebar } from "@/component/feature/app-sidebar/app-sidebar";
 import { SidebarAwareMain, SidebarProvider } from "@/context/sidebar-context";
 
 export default function Layout({
