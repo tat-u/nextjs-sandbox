@@ -24,10 +24,17 @@ const LinkItem = ({ href, label }: { href: string; label: string }) => {
 
 const LinkList = () => {
   return (
-    <ul>
-      <LinkItem href="/use-state" label="useState" />
-      <LinkItem href="/form" label="form" />
-    </ul>
+    <>
+      <ul>
+        <LinkItem href="/use-state" label="useState" />
+        <LinkItem href="/use-context" label="useContext" />
+        <LinkItem href="/api-route" label="API Route" />
+      </ul>
+      <div className="h-1 w-full border-y border-gray-200" />
+      <ul>
+        <LinkItem href="/form" label="form" />
+      </ul>
+    </>
   );
 };
 

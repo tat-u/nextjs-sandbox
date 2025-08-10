@@ -7,8 +7,7 @@ export default function Layout({
 }>) {
   return (
     <>
-      <div className="flex flex-col gap-4">
-        <Counter />
+      <div className="w-100 grid grid-rows-3 border border-gray-200">
         <Counter />
         {children}
       </div>

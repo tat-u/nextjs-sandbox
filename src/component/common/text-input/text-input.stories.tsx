@@ -1,21 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { ReminderForm } from "./ReminderForm";
+import { TextInput } from "./text-input";
 
 const meta = {
-  title: "features/ReminderForm",
-  component: ReminderForm,
+  title: "common/TextInput",
+  component: TextInput,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-} satisfies Meta<typeof ReminderForm>;
+} satisfies Meta<typeof TextInput>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
-/**
- * Visual test only
- */
 export const Example: Story = {
   args: {},
 };

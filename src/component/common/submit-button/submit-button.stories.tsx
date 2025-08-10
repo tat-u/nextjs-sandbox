@@ -1,18 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { TextField } from "./TextField";
+import { SubmitButton } from "./submit-button";
 
 const meta = {
-  title: "molecules/TextField",
-  component: TextField,
+  title: "common/SubmitButton",
+  component: SubmitButton,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof SubmitButton>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Example: Story = {
-  args: { label: "タイトル", error: "入力してください" },
+  args: { children: "Submit" },
 };
