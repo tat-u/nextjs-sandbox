@@ -1,24 +1,21 @@
-import { UseFormRegisterReturn } from "react-hook-form";
 import { useId } from "react";
 import { TextInput } from "../text-input/text-input";
+import { useFormContext } from "react-hook-form";
 
 type TextFieldProps = {
   labelText: string;
   errorText: string | undefined;
-  registerReturn: UseFormRegisterReturn;
+  name: string;
 };
 
-export function TextField({
-  labelText,
-  registerReturn,
-  errorText,
-}: TextFieldProps) {
+export function TextField({ labelText, errorText, name }: TextFieldProps) {
   const id = useId();
+  const { register } = useFormContext();
 
   return (
     <div>
       <label htmlFor={id}>{labelText}</label>
-      <TextInput id={id} {...registerReturn} />
+      <TextInput id={id} {...register(name)} />
       <span className="block h-lh text-sm text-red-600">{errorText}</span>
     </div>
   );

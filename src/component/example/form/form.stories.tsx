@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { TextField } from "./text-field";
+import { ReminderForm } from "./form";
 import { useForm, FormProvider } from "react-hook-form";
 
 const meta = {
-  title: "common/TextField",
-  component: TextField,
+  title: "example/ReminderForm",
+  component: ReminderForm,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
@@ -20,16 +20,10 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof ReminderForm>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Example: Story = {
-  args: {
-    labelText: "Label Text",
-    errorText: "Error Text",
-    name: "fieldName",
-  },
-};
+export const Example: Story = {};
