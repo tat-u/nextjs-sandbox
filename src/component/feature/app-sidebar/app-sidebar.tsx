@@ -27,6 +27,7 @@ const LinkList = () => {
     <ul>
       <LinkItem href="/use-state" label="useState" />
       <LinkItem href="/form" label="form" />
+      <LinkItem href="/use-context" label="useContext" />
     </ul>
   );
 };
