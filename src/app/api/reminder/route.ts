@@ -1,4 +1,4 @@
-import { ReminderSchema } from "@/models/reminder";
+import { ReminderSchema } from "@/model/reminder";
 import { setTimeout } from "timers/promises";
 
 export async function POST(req: Request) {

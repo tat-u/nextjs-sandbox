@@ -6,7 +6,7 @@ import {
   FormProvider,
 } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Reminder, ReminderSchema } from "@/models/reminder";
+import { Reminder, ReminderSchema } from "@/model/reminder";
 import { SubmitButton } from "@/component/common/submit-button/submit-button";
 import { TextField } from "@/component/common/text-field/text-field";
 
